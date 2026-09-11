@@ -1,11 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102a43">
     <title>Team Hello App</title>
+    <style>
+        :root {
+            --ink: #102a43;
+            --muted: #627d98;
+            --paper: #f6f8fb;
+            --accent: #e76f51;
+            --accent-soft: #fff0eb;
+            --line: #d9e2ec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 15%, #ffd7c9 0, transparent 25%),
+                radial-gradient(circle at 90% 85%, #cde8e5 0, transparent 28%),
+                var(--paper);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        main {
+            width: min(100%, 760px);
+            padding: clamp(32px, 8vw, 76px);
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 28px;
+            box-shadow: 0 24px 70px rgba(16, 42, 67, 0.14);
+            animation: rise 700ms ease-out both;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 22px;
+            color: var(--accent);
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        h1 {
+            max-width: 600px;
+            margin: 0;
+            font-size: clamp(2.6rem, 7vw, 5.6rem);
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 0.96;
+        }
+
+        #greet {
+            margin-bottom: 26px;
+        }
+
+        .message {
+            max-width: 520px;
+            margin: 0;
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 42px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .status::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #2a9d8f;
+            box-shadow: 0 0 0 5px #dff3ef;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 520px) {
+            body { padding: 14px; }
+            main { border-radius: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <h1 id="greet"></h1>
-    <p id="timeMsg"></p>
+    <main>
+        <p class="eyebrow">A shared space for good work</p>
+        <h1 id="greet"></h1>
+        <p id="timeMsg" class="message">A small hello can set the tone for the whole day.</p>
+        <div class="status">Team workspace online</div>
+    </main>
 
     <script src="script.js"></script>
 </body>
